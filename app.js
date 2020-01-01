@@ -1,24 +1,24 @@
-const express = requires('express');
+const express = require('express');
 
 const app = express();
 
 app.use((req, res, next) => {
-    console.log('requéte reçue !');
-    next();
+  console.log('Requête reçue !');
+  next();
 });
 
 app.use((req, res, next) => {
-    res.status(201);
-    next();
+  res.status(201);
+  next();
 });
 
 app.use((req, res, next) => {
-    res.json({ message: 'Votre requéte a bien été reçu !'});
+  res.json({ message: 'Votre requête a bien été reçue !' });
+  next();
 });
-    next();
 
 app.use((req, res, next) => {
-    console.log('Réponse envoyée avec succès !');
+  console.log('Réponse envoyée avec succès !');
 });
 
 module.exports = app;
