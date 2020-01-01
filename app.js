@@ -3,22 +3,32 @@ const express = require('express');
 const app = express();
 
 app.use((req, res, next) => {
-  console.log('Requête reçue !');
-  next();
-});
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+  });
+  
 
-app.use((req, res, next) => {
-  res.status(201);
-  next();
-});
+app.use('/api/products', (req, res, next) => {
+    const products = [
+        {
+            _id: 'oeihfzeoi',
+            name: 'Mon premier produit',
+            description: 'les infos de mon premier produit',
+            price: 4900,
+            inStock: 1,
 
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
+        },
+        {
+            _id: 'oeihfzeomoihi',
+            name:  'Deuxième objet',
+            description: 'les infos de mon deuxieme',
+            price:  5000,
+            inStock: 0,
+        }
+    ];
+    res.status(200).json(products);
 });
 
 module.exports = app;
