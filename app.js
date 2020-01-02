@@ -36,11 +36,9 @@ app.post('/api/products', (req, res, next) => {
 app.get('/api/products', (req, res, next) => {
     Product.find()
         .then(products => 
-<<<<<<< HEAD
-            res.status(200).json(products))
-=======
-            res.status(200).json({ products: [Product] }))
->>>>>>> da18fe855a92738cd7318d5e38afb057ae13f96f
+
+            res.status(200).json({ products: [] }))
+
             .catch(error => res.status(400).json ({ error }));
 });
 
