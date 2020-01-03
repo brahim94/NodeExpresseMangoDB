@@ -27,8 +27,8 @@ app.post('/api/products', (req, res, next) => {
     const product = new Product({
         ...req.body
     });
-    product.save()
-        .then(() => res.status(201).json({ product: Product }))
+    products.save()
+        .then(() => res.status(201).json({ product }))
         .catch(error => res.status(400).json({ error }));
 
 });
