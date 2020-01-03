@@ -28,13 +28,13 @@ app.post('/api/products', (req, res, next) => {
         ...req.body
     });
     product.save()
-        .then(() => res.status(201).json({ products }))
+        .then(() => res.status(201).json({ product }))
         .catch(error => res.status(400).json({ error }));
 
 });
 
 app.get('/api/products', (req, res, next) => {
-    Product.find()
+    product.find()
         .then(products =>
 res.status(200).json ({ products }))
     .catch(error => res.status(400).json({ error}));
