@@ -24,11 +24,11 @@ app.use(bodyParser.json());
 
 app.post('/api/products', (req, res, next) => {
     delete req.body._id;
-    const product = new Product({
+    const products = new Product({
         ...req.body
     });
     products.save()
-        .then(() => res.status(201).json({ product }))
+        .then(() => res.status(201).json({ products }))
         .catch(error => res.status(400).json({ error }));
 
 });
