@@ -24,11 +24,11 @@ app.use(bodyParser.json());
 
 app.post('/api/products', (req, res, next) => {
     delete req.body._id;
-    const products = new Product({
+    const product = new Product({
         ...req.body
     });
     products.save()
-        .then(() => res.status(201).json({ product }))
+        .then(() => res.status(201).json({ products }))
         .catch(error => res.status(400).json({ error }));
 
 });
@@ -36,7 +36,7 @@ app.post('/api/products', (req, res, next) => {
 app.get('/api/products', (req, res, next) => {
     Product.find()
         .then(products =>
-res.status(200).json ({ products: Product }))
+res.status(200).json ({ products }))
     .catch(error => res.status(400).json({ error}));
 });
 
