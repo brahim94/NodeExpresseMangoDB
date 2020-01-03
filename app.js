@@ -34,7 +34,7 @@ app.post('/api/products', (req, res, next) => {
 });
 
 app.get('/api/products', (req, res, next) => {
-    product.find()
+    Product.find()
         .then(products =>
 res.status(200).json ({ products }))
     .catch(error => res.status(400).json({ error}));
