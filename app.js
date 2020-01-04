@@ -35,7 +35,8 @@ app.post('/api/products', (req, res, next) => {
 
 app.get('/api/products/:id', (req, res, next) => {
   Product.findOne({ _id: req.params.id })
-    .then(products => res.status(200).json(products))
+    .then(product => 
+      res.status(200).json( {product }))
     .catch(error => res.status(404).json({ error }));
 });
 
