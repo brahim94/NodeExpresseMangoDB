@@ -33,6 +33,12 @@ app.post('/api/products', (req, res, next) => {
 
 });
 
+app.put('/api/products/:id', (req, res, next) => {
+  Product.updateOne({ _id: req.params.id }, {
+    ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Modified!'}));
+  });
+
 app.get('/api/products/:id', (req, res, next) => {
   Product.findOne({ _id: req.params.id })
     .then(product => 
